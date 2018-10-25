@@ -76,7 +76,6 @@ class StorePage extends Component {
 
     return (
       <div className="StorePage">
-        <h1>Store Page</h1>
         <FilterBar filterList={this.state.filterList} filterChange={this.handleFilterChange}/>
         {displayItems.map(function(item) {
           return <ShopItem name={item.name} basePrice={item.basePrice} />;

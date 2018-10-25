@@ -4,7 +4,8 @@ class ShopItem extends Component {
   render() {
     return (
       <div className="ShopItem">
-        <h2>{this.props.name} : {this.props.basePrice}</h2>
+        <h3>{this.props.name}</h3><br />
+        {this.props.basePrice}
       </div>
     );
   }
