@@ -54,9 +54,26 @@ class StorePage extends Component {
         checked: false
         }
       ],
-      filter: ""
+      cart: []
     }
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.addItemToCart = this.addItemToCart.bind(this);
+    this.switchToCart = this.switchToCart.bind(this);
+  }
+
+  switchToCart() {
+    
+  }
+
+  addItemToCart(itemName, itemIndex) {
+    if (this.state.items[itemIndex].name == itemName) {
+      let pushToCart = this.state.cart;
+      pushToCart.push({name: itemName, index: itemIndex});
+      this.setState({
+        cart: pushToCart
+      });
+    }
+    else console.log("An error has occured, card index not found.");
   }
 
   //Dealing with checking and unchecking of filters
@@ -74,6 +91,7 @@ class StorePage extends Component {
 
   //Filtering items based on the filters checked, putting items into displayItems
   render() {
+    let addItem = this.addItemToCart;
     let filteredList = [];
     this.state.filterList.filter(function(item) {
       if (item.checked == true) {
@@ -94,9 +112,10 @@ class StorePage extends Component {
 
     return (
       <div className="StorePage">
+        <CartModule cart={this.state.cart} />
         <FilterBar filterList={this.state.filterList} filterChange={this.handleFilterChange}/>
-        {displayItems.map(function(item) {
-          return <ShopItem name={item.name} basePrice={item.basePrice} salePrice={item.salePrice} badge={item.badge} rating={item.rating}/>;
+        {displayItems.map(function(item, i) {
+          return <ShopItem name={item.name} basePrice={item.basePrice} salePrice={item.salePrice} badge={item.badge} rating={item.rating} addItem={addItem} index={i}/>;
         })}
       </div>
     );

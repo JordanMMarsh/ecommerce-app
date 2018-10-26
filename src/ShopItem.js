@@ -72,7 +72,7 @@ class ShopItem extends Component {
         <img src={ratingImg} alt={altRating} /> <span className="textRating">{rating}</span>
         </div>
         <div className="buyNow">
-        <h3 className="buyButton">Buy Now</h3>
+        <h3 className="buyButton" onClick={() => this.props.addItem(this.props.name, this.props.index)}>Add to Cart</h3>
         </div>
       </div>
     );

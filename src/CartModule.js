@@ -4,7 +4,7 @@ class CartModule extends Component {
   render() {
     return (
       <div className="CartModule">
-        <h2>Cart Module</h2>
+        <span className="cartCount">Cart [{this.props.cart.length}]</span>
       </div>
     );
   }

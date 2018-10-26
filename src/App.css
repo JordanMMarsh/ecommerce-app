@@ -9,8 +9,20 @@
   margin: auto;
 }
 
+.CartModule {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 20px;
+}
+
+.CartModule:hover {
+  cursor: pointer;
+}
+
 .ShopItem {
   border: 1px solid black;
+  border-radius: 2px;
   min-width: 10%;
   max-width: 200px;
   margin: 10px;
