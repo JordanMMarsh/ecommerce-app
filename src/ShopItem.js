@@ -4,7 +4,7 @@ class ShopItem extends Component {
   render() {
     //If on sale, assign pricing spans for css
     let salePrice = this.props.salePrice;
-    let pricing = <span className="basePrice">{this.props.basePrice}</span>;
+    let pricing = <span className="basePrice">${this.props.basePrice}</span>;
     if (salePrice != "") {
       pricing = <div><span className="baseSale">${this.props.basePrice}</span>
       <span className="salePrice">${this.props.salePrice}</span></div>

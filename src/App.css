@@ -134,3 +134,7 @@
 .FilterBar ul li {
   list-style-type: none;
 }
+
+.backToStore:hover {
+  cursor: pointer;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FilterBar from './FilterBar';
 import ShopItem from './ShopItem';
 import CartModule from './CartModule';
+import CartItem from './CartItem';
 
 //Item list
 let items = [
@@ -54,15 +55,34 @@ class StorePage extends Component {
         checked: false
         }
       ],
-      cart: []
+      cart: [],
+      screen: "shop"
     }
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.addItemToCart = this.addItemToCart.bind(this);
     this.switchToCart = this.switchToCart.bind(this);
+    this.switchToStore = this.switchToStore.bind(this);
+    this.removeItemFromCart = this.removeItemFromCart.bind(this);
+  }
+
+  switchToStore() {
+    if (this.state.screen != "shop") {
+      this.setState({
+        screen: "shop"
+      });
+    }
   }
 
   switchToCart() {
-    
+    if (this.state.screen != "cart") {
+      this.setState({
+        screen: "cart"
+      });
+    }
+  }
+
+  removeItemFromCart(itemIndex, numberToRemove) {
+
   }
 
   addItemToCart(itemName, itemIndex) {
@@ -110,15 +130,34 @@ class StorePage extends Component {
       displayItems = this.state.items;
     }
 
-    return (
-      <div className="StorePage">
-        <CartModule cart={this.state.cart} />
-        <FilterBar filterList={this.state.filterList} filterChange={this.handleFilterChange}/>
-        {displayItems.map(function(item, i) {
-          return <ShopItem name={item.name} basePrice={item.basePrice} salePrice={item.salePrice} badge={item.badge} rating={item.rating} addItem={addItem} index={i}/>;
-        })}
-      </div>
-    );
+    //Render screen based on state of "screen" (shop page / cart page)
+    if (this.state.screen == "shop") {
+      return (
+        <div className="StorePage">
+          <CartModule cart={this.state.cart} switchToCart={this.switchToCart} />
+          <FilterBar filterList={this.state.filterList} filterChange={this.handleFilterChange}/>
+          {displayItems.map(function(item, i) {
+            return <ShopItem name={item.name} basePrice={item.basePrice} salePrice={item.salePrice} badge={item.badge} rating={item.rating} addItem={addItem} index={i}/>;
+          })}
+        </div>
+      );
+    }
+    else if (this.state.screen == "cart") {
+      let itemList = this.state.items;
+      return (
+        <div className="CartPage">
+          <div className="backToStore" onClick={this.switchToStore}>
+            <span className="backToStoreLink">Continue Shopping</span>
+          </div>
+          <div className="cartItems">
+            {this.state.cart.map(function(item) {
+              let itemAtIndex = itemList[item.index];
+              return <CartItem itemName={itemAtIndex.name} itemBasePrice={itemAtIndex.basePrice} itemSalePrice={itemAtIndex.salePrice} itemIndex={item.index} />
+            })}
+          </div>
+        </div>
+      );
+    }
   }
 }
 
