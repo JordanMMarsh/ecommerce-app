@@ -4,7 +4,7 @@ class ShopItem extends Component {
   render() {
     //If on sale, assign pricing spans for css
     let salePrice = this.props.salePrice;
-    let pricing = this.props.basePrice;
+    let pricing = <span className="basePrice">{this.props.basePrice}</span>;
     if (salePrice != "") {
       pricing = <div><span className="baseSale">${this.props.basePrice}</span>
       <span className="salePrice">${this.props.salePrice}</span></div>
@@ -61,12 +61,18 @@ class ShopItem extends Component {
     return (
       <div className="ShopItem">
         <h3 className="badge">{this.props.badge}</h3>
+        <h3 className="itemName">{this.props.name}</h3>
+        <div className="productImgContainer">
+        <img src="../images/tvimg.png" alt="Television" />
+        </div>
         <div className="pricing">
-        <h3 className="itemName">{this.props.name}</h3><br />
-        {pricing}<br />
+        {pricing}
         </div>
         <div className="ratings">
         <img src={ratingImg} alt={altRating} /> <span className="textRating">{rating}</span>
+        </div>
+        <div className="buyNow">
+        <h3 className="buyButton">Buy Now</h3>
         </div>
       </div>
     );
