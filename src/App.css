@@ -9,6 +9,51 @@
   margin: auto;
 }
 
+.ShopItem {
+  position: relative;
+}
+
+.pricing {
+  margin: 10px;
+  display: block;
+}
+
+.baseSale {
+  text-decoration: line-through;
+}
+
+.salePrice {
+  color: red;
+  font-size: 110%;
+  margin-left: 10px;
+}
+
+.badge {
+  font-size: 75%;
+}
+
+.ratings {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1px;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.ratings img {
+  max-width: 80%;
+  display: block;
+  height: auto;
+}
+
+.textRating {
+  font-size: 80%;
+  width: 20%;
+  margin-top: -17px;
+  float: right;
+}
+
 .FilterBar {
   border: 1px solid black;
   width: 150px;

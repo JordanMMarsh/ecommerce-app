@@ -2,10 +2,72 @@ import React, { Component } from 'react';
 
 class ShopItem extends Component {
   render() {
+    //If on sale, assign pricing spans for css
+    let salePrice = this.props.salePrice;
+    let pricing = this.props.basePrice;
+    if (salePrice != "") {
+      pricing = <div><span className="baseSale">${this.props.basePrice}</span>
+      <span className="salePrice">${this.props.salePrice}</span></div>
+    }
+
+    //Assign rating image based on rating
+    let ratingImg;
+    let altRating = "Item rating";
+    let rating = this.props.rating;
+    if (rating == 5) {
+      ratingImg = "../images/rating5.png";
+      altRating = "5 star rating";
+    }
+    else if (rating >= 4.5) {
+      ratingImg = "../images/rating45.png";
+      altRating = "4.5 star rating";
+    }
+    else if (rating >= 4.0) {
+      ratingImg = "../images/rating4.png";
+      altRating = "4 star rating";
+    }
+    else if (rating >= 3.5) {
+      ratingImg = "../images/rating35.png";
+      altRating = "3.5 star rating";
+    }
+    else if (rating >= 3.0) {
+      ratingImg = "../images/rating3.png";
+      altRating = "3 star rating";
+    }
+    else if (rating >= 2.5) {
+      ratingImg = "../images/rating25.png";
+      altRating = "2.5 star rating";
+    }
+    else if (rating >= 2.0) {
+      ratingImg = "../images/rating2.png";
+      altRating = "2 star rating";
+    }
+    else if (rating >= 1.5) {
+      ratingImg = "../images/rating15.png";
+      altRating = "1.5 star rating";
+    }
+    else if (rating >= 1.0) {
+      ratingImg = "../images/rating1.png";
+      altRating = "1 star rating";
+    }
+    else if (rating >= 0.5) {
+      ratingImg = "../images/rating05.png";
+      altRating = "0.5 star rating";
+    }
+    else {
+      ratingImg = "../images/rating0.png";
+      altRating = "Less than 0.5 star rating";
+    }
     return (
       <div className="ShopItem">
-        <h3>{this.props.name}</h3><br />
-        {this.props.basePrice}
+        <h3 className="badge">{this.props.badge}</h3>
+        <div className="pricing">
+        <h3 className="itemName">{this.props.name}</h3><br />
+        {pricing}<br />
+        </div>
+        <div className="ratings">
+        <img src={ratingImg} alt={altRating} /> <span className="textRating">{rating}</span>
+        </div>
       </div>
     );
   }
