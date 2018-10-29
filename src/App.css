@@ -137,4 +137,10 @@
 
 .backToStore:hover {
   cursor: pointer;
+  text-decoration: underline;
+}
+
+.removeItem:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

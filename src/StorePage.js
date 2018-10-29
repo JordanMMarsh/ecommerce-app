@@ -56,8 +56,9 @@ class StorePage extends Component {
         }
       ],
       cart: [],
+      cartSize: 0,
       screen: "shop"
-    }
+    };
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.addItemToCart = this.addItemToCart.bind(this);
     this.switchToCart = this.switchToCart.bind(this);
@@ -81,16 +82,56 @@ class StorePage extends Component {
     }
   }
 
-  removeItemFromCart(itemIndex, numberToRemove) {
-
+  removeItemFromCart(itemName) {
+    //find and remove item from cart
+    let cart = this.state.cart;
+    let cartSize = this.state.cartSize;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].name == itemName) {
+        if (cart[i].quantity <= 1)
+        {
+          cart.splice(i, 1);
+        }
+        else
+        {
+          cart[i].quantity -= 1;
+        }
+        cartSize -= 1;
+        this.setState({
+          cart: cart,
+          cartSize: cartSize
+        });
+        return;
+      }
+    }
   }
 
   addItemToCart(itemName, itemIndex) {
     if (this.state.items[itemIndex].name == itemName) {
       let pushToCart = this.state.cart;
-      pushToCart.push({name: itemName, index: itemIndex});
+      let cartSize = this.state.cartSize;
+
+      //find if object exists in cart to change quantity
+      //Not super efficient for large arrays, but cart size should remain fairly small and manageable
+      for (let i = 0; i < pushToCart.length; i++) {
+        if (pushToCart[i].name == itemName) {
+          console.log("Item found in cart");
+          pushToCart[i].quantity += 1;
+          cartSize += 1;
+          this.setState({
+            cart: pushToCart,
+            cartSize: cartSize
+          });
+          return;
+        }
+      }
+        console.log("Item not in cart");
+        pushToCart.push({name: itemName, index: itemIndex, quantity: 1});
+        cartSize += 1;
+
       this.setState({
-        cart: pushToCart
+        cart: pushToCart,
+        cartSize: cartSize
       });
     }
     else console.log("An error has occured, card index not found.");
@@ -130,11 +171,12 @@ class StorePage extends Component {
       displayItems = this.state.items;
     }
 
+    let itemList = this.state.items;
     //Render screen based on state of "screen" (shop page / cart page)
     if (this.state.screen == "shop") {
       return (
         <div className="StorePage">
-          <CartModule cart={this.state.cart} switchToCart={this.switchToCart} />
+          <CartModule cartSize={this.state.cartSize} switchToCart={this.switchToCart} />
           <FilterBar filterList={this.state.filterList} filterChange={this.handleFilterChange}/>
           {displayItems.map(function(item, i) {
             return <ShopItem name={item.name} basePrice={item.basePrice} salePrice={item.salePrice} badge={item.badge} rating={item.rating} addItem={addItem} index={i}/>;
@@ -143,7 +185,7 @@ class StorePage extends Component {
       );
     }
     else if (this.state.screen == "cart") {
-      let itemList = this.state.items;
+      let removeItemFunction = this.removeItemFromCart;
       return (
         <div className="CartPage">
           <div className="backToStore" onClick={this.switchToStore}>
@@ -152,7 +194,7 @@ class StorePage extends Component {
           <div className="cartItems">
             {this.state.cart.map(function(item) {
               let itemAtIndex = itemList[item.index];
-              return <CartItem itemName={itemAtIndex.name} itemBasePrice={itemAtIndex.basePrice} itemSalePrice={itemAtIndex.salePrice} itemIndex={item.index} />
+              return <CartItem itemName={itemAtIndex.name} itemBasePrice={itemAtIndex.basePrice} itemSalePrice={itemAtIndex.salePrice} itemQuantity={item.quantity} removeItem={removeItemFunction} itemIndex={item.index} />
             })}
           </div>
         </div>
