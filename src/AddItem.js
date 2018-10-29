@@ -40,10 +40,10 @@ class AddItem extends Component {
       <h3 id="clickToExpand" onClick={this.toggleDisplay}>{this.state.expandText}</h3>
       <div className="addItemOptions" id={this.state.displayOptions}>
       {this.props.error}<br />
-      <input id="addItemName" type="text" value={this.props.nameValue} onChange={this.props.handleNameChange} placeholder="Enter item name"/><br />
-      $<input id="addItemPrice" type="text" placeholder="Enter item price" value={this.props.itemPrice} onChange={this.props.handlePriceChange}/><br />
-      $<input id="addItemSalePrice" type="text" placeholder="Enter item sale price" value={this.props.itemSalePrice} onChange={this.props.salePriceChange}/><br />
-      <input id="addItemBadge" type="text" placeholder="Item badge(Best Value, New)" value={this.props.badgeValue} onChange={this.props.badgeChange}/>
+      <input id="addItemName" type="text" value={this.props.nameValue} onChange={this.props.handleNameChange} maxlength="50" placeholder="Enter item name"/><br />
+      $<input id="addItemPrice" type="text" placeholder="Enter item price" value={this.props.itemPrice} maxlength="8" onChange={this.props.handlePriceChange}/><br />
+      $<input id="addItemSalePrice" type="text" placeholder="Enter item sale price" value={this.props.itemSalePrice} maxlength="8" onChange={this.props.salePriceChange}/><br />
+      <input id="addItemBadge" type="text" placeholder="Item badge(Best Value, New)" value={this.props.badgeValue} maxlength="20" onChange={this.props.badgeChange}/>
       <div className="priceSliderContainer">
       Rating: {this.props.itemRating}<br />
       <input type="range" min="0" max="5" step="0.5" value={this.props.itemRating} onChange={this.props.ratingChange} className="priceSlider" /><br />

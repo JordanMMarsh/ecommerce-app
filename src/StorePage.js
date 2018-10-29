@@ -401,9 +401,9 @@ class StorePage extends Component {
     if (this.state.screen == "shop") {
       return (
         <div className="StorePage">
-          <AddItem filters={this.state.addItemFilterList} handleChange={this.handleItemFilterChange} handleNameChange={this.handleItemNameChange} itemPrice={this.state.addItemPrice} handlePriceChange={this.handleItemPriceChange} itemSalePrice={this.state.addItemSalePrice} salePriceChange={this.handleItemSalePriceChange} itemRating={this.state.addItemRating} ratingChange={this.handleItemRatingChange} nameValue={this.state.addItemName} badgeValue={this.state.addItemBadge} badgeChange={this.handleItemBadgeChange} addItem={this.addItemToStore} error={this.state.addItemError}/>
-          <CartModule cartSize={this.state.cartSize} switchToCart={this.switchToCart} cartTotal={this.state.cartTotal}/>
+        <CartModule cartSize={this.state.cartSize} switchToCart={this.switchToCart} cartTotal={this.state.cartTotal}/>
           <FilterBar filterList={this.state.filterList} filterChange={this.handleFilterChange}/>
+          <AddItem filters={this.state.addItemFilterList} handleChange={this.handleItemFilterChange} handleNameChange={this.handleItemNameChange} itemPrice={this.state.addItemPrice} handlePriceChange={this.handleItemPriceChange} itemSalePrice={this.state.addItemSalePrice} salePriceChange={this.handleItemSalePriceChange} itemRating={this.state.addItemRating} ratingChange={this.handleItemRatingChange} nameValue={this.state.addItemName} badgeValue={this.state.addItemBadge} badgeChange={this.handleItemBadgeChange} addItem={this.addItemToStore} error={this.state.addItemError}/>
           {displayItems.map(function(item, i) {
             return <ShopItem name={item.name} basePrice={item.basePrice} salePrice={item.salePrice} badge={item.badge} rating={item.rating} addItem={addItem} index={i}/>;
           })}

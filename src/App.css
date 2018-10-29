@@ -1,5 +1,3 @@
-
-
 .App {
   text-align: center;
 }
@@ -11,11 +9,31 @@
   margin: auto;
 }
 
+#storeTitle {
+  color: blue;
+  border: 2px solid #2eadea;
+  border-bottom: none;
+  border-radius: 40px 40px 0px 0px;
+  background-color: #addff7;
+  width: 180px;
+  margin: auto;
+  margin-top: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .CartModule {
   position: fixed;
   top: 0;
   right: 0;
-  margin-right: 20px;
+  margin-right: 2%;
+  margin-top: -10px;
+  border: 2px solid #2eadea;
+  border-top: none;
+  border-radius: 0px 0px 20px 20px;
+  background-color: #addff7;
+  color: blue;
+  padding: 10px;
 }
 
 .CartModule:hover {
@@ -23,8 +41,8 @@
 }
 
 .ShopItem {
-  border: 1px solid black;
-  border-radius: 2px;
+  border: 2px solid #2eadea;
+  border-radius: 10px;
   min-width: 10%;
   max-width: 200px;
   margin: 10px;
@@ -50,6 +68,7 @@
 
 .salePrice {
   color: red;
+  font-weight: bold;
   font-size: 110%;
   margin-left: 10px;
 }
@@ -123,19 +142,31 @@
 }
 
 .FilterBar {
-  border: 1px solid black;
-  width: 150px;
+  border: 2px solid #2eadea;
+  border-radius: 40px 0px 40px 0px;
+  color: blue;
+  background-color: #addff7;
+  width: 90%;
   padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.FilterBar ul {
-  padding: 0;
-  list-style-type: none;
-}
-
-.FilterBar ul li {
-  list-style-type: none;
+#filterTitle {
   text-align: left;
+  margin: 0px;
+}
+
+.FilterItem {
+  width: 120px;
+  margin: 10px;
+  display: inline-block;
+  border-bottom: 1px solid #2eadea;
+  font-size: 110%;
+}
+
+.FilterItem:hover {
+  cursor: pointer;
 }
 
 .backToStore:hover {
@@ -154,17 +185,24 @@
 }
 
 .CartItem {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #2eadea;
   padding-bottom: 10px;
 }
 
 .addItemForm {
+  width: 200px;
   padding: 10px;
+  border: 2px solid #2eadea;
+  border-radius: 0px 0px 40px 0px;
+  background-color: #addff7;
+  color: blue;
+  font-size: 90%;
+  border-top: none;
 }
 
 .addItemForm ul li {
   list-style-type: none;
-  text-align: left;
+  text-align: right;
 }
 
 #clickToExpand:hover {
@@ -178,7 +216,71 @@
 
 #showElement {
   display: block;
-  border: 1px solid black;
   padding: 5px;
-  text-align: left;
+  text-align: right;
+}
+
+#addItemSubmit {
+  border: 1px solid #2eadea;
+  border-radius: 5px;
+  background-color: #addff7;
+  width: 80%;
+  margin: auto;
+  padding: 0px;
+  padding-top: 2px;
+  font-size: 100%;
+  font-weight: normal;
+  color: blue;
+}
+
+#addItemSubmit:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
+.CartPage {
+  background-color: #addff7;
+  border: 2px solid #2eadea;
+  border-radius: 40px;
+  width: 90%;
+  min-height: 150px;
+  margin: auto;
+  color: blue;
+}
+
+.cartTotal {
+  font-weight: bold;
+}
+
+.backToStore {
+  display: block;
+  border-bottom: 1px solid #2eadea;
+  width: 200px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 550px) {
+  .addItemForm {
+    width: 90%;
+    padding: 10px;
+    border-radius: 0px 0px 40px 40px;
+  }
+
+  .FilterBar {
+    border-radius: 40px 40px 0px 0px;
+  }
+
+  .CartModule {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    border-bottom: none;
+    border-top: 2px solid #2eadea;
+    border-radius: 20px 20px 0px 0px;
+    margin-top: 0px;
+    margin-bottom: -10px;
+  }
 }
