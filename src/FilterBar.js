@@ -10,7 +10,7 @@ class FilterBar extends Component {
     let filterChange = this.props.filterChange;
     return (
       <div className="FilterBar">
-        <h2>Filter Bar</h2>
+        <h2>Filter</h2>
         <form>
         {this.props.filterList.map(function(item) {
           return <FilterItem name={item.name} checked={item.checked} filterChange={filterChange}/>;

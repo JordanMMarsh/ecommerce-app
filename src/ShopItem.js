@@ -58,9 +58,13 @@ class ShopItem extends Component {
       ratingImg = "../images/rating0.png";
       altRating = "Less than 0.5 star rating";
     }
+    let displayBadge = "";
+    if (this.props.badge != "") {
+      displayBadge = <h3 className="badge">{this.props.badge}</h3>;
+    }
     return (
       <div className="ShopItem">
-        <h3 className="badge">{this.props.badge}</h3>
+        {displayBadge}
         <h3 className="itemName">{this.props.name}</h3>
         <div className="productImgContainer">
         <img src="../images/tvimg.png" alt="Television" />

@@ -133,6 +133,7 @@
 
 .FilterBar ul li {
   list-style-type: none;
+  text-align: left;
 }
 
 .backToStore:hover {
@@ -143,4 +144,24 @@
 .removeItem:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.addItem:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.CartItem {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.addItemForm {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.addItemForm ul li {
+  list-style-type: none;
+  text-align: left;
 }
