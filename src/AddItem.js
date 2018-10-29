@@ -3,6 +3,33 @@ import React, { Component } from 'react';
 class AddItem extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      displayExpand: "showElement",
+      displayOptions: "hideElement",
+      expandText: "Click to expand"
+    };
+    this.toggleDisplay = this.toggleDisplay.bind(this);
+  }
+
+  toggleDisplay() {
+    let displayExpand = this.state.displayExpand;
+    let displayOptions = this.state.displayOptions;
+    let expandText = this.state.expandText;
+    if (displayExpand == "showElement") {
+      displayExpand = "hideElement";
+      displayOptions = "showElement";
+      expandText = "Click to collapse";
+    }
+    else {
+      displayExpand = "showElement";
+      displayOptions = "hideElement";
+      expandText = "Click to expand";
+    }
+    this.setState({
+      displayExpand: displayExpand,
+      displayOptions: displayOptions,
+      expandText: expandText
+    });
   }
 
   render() {
@@ -10,6 +37,17 @@ class AddItem extends Component {
     return (
       <div className="addItemForm">
       <h2>Add Item</h2>
+      <h3 id="clickToExpand" onClick={this.toggleDisplay}>{this.state.expandText}</h3>
+      <div className="addItemOptions" id={this.state.displayOptions}>
+      {this.props.error}<br />
+      <input id="addItemName" type="text" value={this.props.nameValue} onChange={this.props.handleNameChange} placeholder="Enter item name"/><br />
+      $<input id="addItemPrice" type="text" placeholder="Enter item price" value={this.props.itemPrice} onChange={this.props.handlePriceChange}/><br />
+      $<input id="addItemSalePrice" type="text" placeholder="Enter item sale price" value={this.props.itemSalePrice} onChange={this.props.salePriceChange}/><br />
+      <input id="addItemBadge" type="text" placeholder="Item badge(Best Value, New)" value={this.props.badgeValue} onChange={this.props.badgeChange}/>
+      <div className="priceSliderContainer">
+      Rating: {this.props.itemRating}<br />
+      <input type="range" min="0" max="5" step="0.5" value={this.props.itemRating} onChange={this.props.ratingChange} className="priceSlider" /><br />
+      </div>
       <ul id="addItemFilters">
       {this.props.filters.map(function(item) {
         let checked = item.checked;
@@ -18,7 +56,8 @@ class AddItem extends Component {
         return <li className="addItemFilterListItem"><input type="checkbox" onChange={() => onChangeFunction(item.name)} checked={displayChecked}/>{item.name}</li>;
       })}
       </ul>
-      </div>
+      <input id="addItemSubmit" type="button" value="Add Item" onClick={this.props.addItem}/>
+      </div></div>
     );
   }
 }

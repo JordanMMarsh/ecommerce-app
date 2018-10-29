@@ -122,6 +122,12 @@ class StorePage extends Component {
         checked: false
         }
       ],
+      addItemName: "",
+      addItemPrice: "",
+      addItemSalePrice: "",
+      addItemRating: 2.5,
+      addItemBadge: "",
+      addItemError: "",
       cart: [],
       cartSize: 0,
       cartTotal: 0,
@@ -137,11 +143,68 @@ class StorePage extends Component {
     this.addItemToStore = this.addItemToStore.bind(this);
     this.handleItemNameChange = this.handleItemNameChange.bind(this);
     this.handleItemFilterChange = this.handleItemFilterChange.bind(this);
+    this.handleItemPriceChange = this.handleItemPriceChange.bind(this);
+    this.handleItemSalePriceChange = this.handleItemSalePriceChange.bind(this);
+    this.handleItemRatingChange = this.handleItemRatingChange.bind(this);
+    this.handleItemBadgeChange = this.handleItemBadgeChange.bind(this);
   }
 
   //used to test features
   addItemToStore() {
+    let items = this.state.items;
+    let itemName = this.state.addItemName;
+    let itemPrice = parseFloat(this.state.addItemPrice);
+    let itemSalePrice = this.state.addItemSalePrice;
+    if (itemSalePrice != "") itemSalePrice = parseFloat(itemSalePrice);
+    let itemRating = this.state.addItemRating;
+    let itemBadge = this.state.addItemBadge;
+    let itemFilterList = this.state.addItemFilterList;
+    let addItemFilters = [];
+    let itemError = "";
+    if (itemName == "") {
+      itemError = "Item name cannot be blank";
+    }
+    else if (isNaN(itemPrice)) {
+      itemError = "Item price must be a number";
+    }
+    else if (itemSalePrice != "" && isNaN(itemSalePrice)) {
+      itemError = "Item sale price must be a number";
+    }
+    else if (itemSalePrice >= itemPrice) {
+      itemError = "Item sale price must be less than base price";
+    }
+    else {
+      for (let i = 0; i < itemFilterList.length; i++) {
+          if (itemFilterList[i].checked) {
+            addItemFilters.push(itemFilterList[i].name); //add filter to item
+            itemFilterList[i].checked = false; //reset filter for next item
+          }
+      }
 
+      //add item to items list
+      items.push({
+        name: itemName,
+        basePrice: itemPrice,
+        salePrice: itemSalePrice,
+        tags: addItemFilters,
+        badge: itemBadge,
+        rating: itemRating
+      });
+
+      //reset add item form
+      this.setState({
+        items: items,
+        addItemName: "",
+        addItemPrice: "",
+        addItemSalePrice: "",
+        addItemRating: "",
+        addItemBadge: "",
+        addItemFilterList: itemFilterList
+      });
+    }
+    this.setState({
+      addItemError: itemError
+    });
   }
 
   handleItemFilterChange(val) {
@@ -149,16 +212,43 @@ class StorePage extends Component {
     for (let i = 0; i < addItemFilterList.length; i++) {
       if (addItemFilterList[i].name == val) {
         addItemFilterList[i].checked = !addItemFilterList[i].checked;
+        this.setState({
+          addItemFilterList: addItemFilterList
+        });
+        return;
       }
-      this.setState({
-        addItemFilterList: addItemFilterList
-      });
-      return;
     }
   }
 
   handleItemNameChange(e) {
+    this.setState({
+      addItemName: e.target.value
+    });
+  }
 
+  handleItemPriceChange(e) {
+    this.setState({
+      addItemPrice: e.target.value
+    });
+
+  }
+
+  handleItemSalePriceChange(e) {
+    this.setState({
+      addItemSalePrice: e.target.value
+    });
+  }
+
+  handleItemRatingChange(e) {
+    this.setState({
+      addItemRating: e.target.value
+    });
+  }
+
+  handleItemBadgeChange(e) {
+    this.setState({
+      addItemBadge: e.target.value
+    });
   }
   //end test feature functions
 
@@ -311,7 +401,7 @@ class StorePage extends Component {
     if (this.state.screen == "shop") {
       return (
         <div className="StorePage">
-          <AddItem filters={this.state.addItemFilterList} handleChange={this.handleItemFilterChange} />
+          <AddItem filters={this.state.addItemFilterList} handleChange={this.handleItemFilterChange} handleNameChange={this.handleItemNameChange} itemPrice={this.state.addItemPrice} handlePriceChange={this.handleItemPriceChange} itemSalePrice={this.state.addItemSalePrice} salePriceChange={this.handleItemSalePriceChange} itemRating={this.state.addItemRating} ratingChange={this.handleItemRatingChange} nameValue={this.state.addItemName} badgeValue={this.state.addItemBadge} badgeChange={this.handleItemBadgeChange} addItem={this.addItemToStore} error={this.state.addItemError}/>
           <CartModule cartSize={this.state.cartSize} switchToCart={this.switchToCart} cartTotal={this.state.cartTotal}/>
           <FilterBar filterList={this.state.filterList} filterChange={this.handleFilterChange}/>
           {displayItems.map(function(item, i) {

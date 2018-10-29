@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -157,11 +159,26 @@
 }
 
 .addItemForm {
-  border: 1px solid black;
   padding: 10px;
 }
 
 .addItemForm ul li {
   list-style-type: none;
+  text-align: left;
+}
+
+#clickToExpand:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#hideElement {
+  display: none;
+}
+
+#showElement {
+  display: block;
+  border: 1px solid black;
+  padding: 5px;
   text-align: left;
 }
