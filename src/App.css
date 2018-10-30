@@ -34,6 +34,7 @@
   box-shadow: 3px 3px grey;
   color: black;
   padding: 10px;
+  background-color: white;
 }
 
 .CartModule:hover {
