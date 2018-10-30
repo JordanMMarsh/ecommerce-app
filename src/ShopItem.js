@@ -16,47 +16,47 @@ class ShopItem extends Component {
     let altRating = "Item rating";
     let rating = this.props.rating;
     if (rating == 5) {
-      ratingImg = "/images/rating5.png";
+      ratingImg = "images/rating5.png";
       altRating = "5 star rating";
     }
     else if (rating >= 4.5) {
-      ratingImg = "/images/rating45.png";
+      ratingImg = "images/rating45.png";
       altRating = "4.5 star rating";
     }
     else if (rating >= 4.0) {
-      ratingImg = "/images/rating4.png";
+      ratingImg = "images/rating4.png";
       altRating = "4 star rating";
     }
     else if (rating >= 3.5) {
-      ratingImg = "/images/rating35.png";
+      ratingImg = "images/rating35.png";
       altRating = "3.5 star rating";
     }
     else if (rating >= 3.0) {
-      ratingImg = "/images/rating3.png";
+      ratingImg = "images/rating3.png";
       altRating = "3 star rating";
     }
     else if (rating >= 2.5) {
-      ratingImg = "/images/rating25.png";
+      ratingImg = "images/rating25.png";
       altRating = "2.5 star rating";
     }
     else if (rating >= 2.0) {
-      ratingImg = "/images/rating2.png";
+      ratingImg = "images/rating2.png";
       altRating = "2 star rating";
     }
     else if (rating >= 1.5) {
-      ratingImg = "/images/rating15.png";
+      ratingImg = "images/rating15.png";
       altRating = "1.5 star rating";
     }
     else if (rating >= 1.0) {
-      ratingImg = "/images/rating1.png";
+      ratingImg = "images/rating1.png";
       altRating = "1 star rating";
     }
     else if (rating >= 0.5) {
-      ratingImg = "/images/rating05.png";
+      ratingImg = "images/rating05.png";
       altRating = "0.5 star rating";
     }
     else {
-      ratingImg = "/images/rating0.png";
+      ratingImg = "images/rating0.png";
       altRating = "Less than 0.5 star rating";
     }
     let displayBadge = "";
@@ -68,7 +68,7 @@ class ShopItem extends Component {
         {displayBadge}
         <h3 className="itemName">{this.props.name}</h3>
         <div className="productImgContainer">
-        <img src="/images/tvimg.png" alt="Television" />
+        <img src="images/tvimg.png" alt="Television" />
         </div>
         <div className="pricing">
         {pricing}
