@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class ShopItem extends Component {
   render() {
     //If on sale, assign pricing spans for css
@@ -67,7 +68,7 @@ class ShopItem extends Component {
         {displayBadge}
         <h3 className="itemName">{this.props.name}</h3>
         <div className="productImgContainer">
-        <img src="../images/tvimg.png" alt="Television" />
+        <img src="/images/tvimg.png" alt="Television" />
         </div>
         <div className="pricing">
         {pricing}
