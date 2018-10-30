@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: sans-serif;
 }
 
 .StorePage {
@@ -10,16 +11,16 @@
 }
 
 #storeTitle {
-  color: blue;
-  border: 2px solid #2eadea;
+  color: black;
+  border: 1px solid black;
   border-bottom: none;
-  border-radius: 40px 40px 0px 0px;
-  background-color: #addff7;
+  box-shadow: 3px 0px grey;
   width: 180px;
   margin: auto;
   margin-top: 10px;
   padding-left: 0px;
   padding-right: 0px;
+  font-weight: normal;
 }
 
 .CartModule {
@@ -28,11 +29,10 @@
   right: 0;
   margin-right: 2%;
   margin-top: -10px;
-  border: 2px solid #2eadea;
+  border: 1px solid black;
   border-top: none;
-  border-radius: 0px 0px 20px 20px;
-  background-color: #addff7;
-  color: blue;
+  box-shadow: 3px 3px grey;
+  color: black;
   padding: 10px;
 }
 
@@ -41,8 +41,8 @@
 }
 
 .ShopItem {
-  border: 2px solid #2eadea;
-  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 5px 5px grey;
   min-width: 10%;
   max-width: 200px;
   margin: 10px;
@@ -53,6 +53,7 @@
 
 .itemName {
   margin: 5px;
+  margin-bottom: 10px;
   padding: 0px;
 }
 
@@ -75,11 +76,11 @@
 
 .badge {
   margin-top: 1px;
-  font-size: 75%;
-  border: 2px solid #2eadea;
-  border-radius: 5px;
-  background-color: #addff7;
+  font-size: 90%;
+  font-weight: normal;
+  border-bottom: 2px solid black;
   padding: 2px;
+  width: 100px;
 }
 
 .itemName {
@@ -119,9 +120,9 @@
 }
 
 .buyNow {
-  border: 1px solid #2eadea;
-  border-radius: 5px;
-  background-color: #addff7;
+  border: 1px solid black;
+  box-shadow: 3px 3px grey;
+  background-color: white;
   width: 80%;
   margin: auto;
   margin-top: 5px;
@@ -129,6 +130,7 @@
 
 .buyNow:hover {
   cursor: pointer;
+  background-color: #efefef;
 }
 
 .buyButton {
@@ -138,14 +140,17 @@
   margin-right: 5px;
   font-size: 100%;
   font-weight: normal;
-  color: blue;
+  color: black;
+}
+
+.buyNow:active {
+  box-shadow: 0px 0px;
 }
 
 .FilterBar {
-  border: 2px solid #2eadea;
-  border-radius: 40px 0px 40px 0px;
-  color: blue;
-  background-color: #addff7;
+  border: 1px solid black;
+  box-shadow: 3px 3px grey;
+  color: black;
   width: 90%;
   padding: 10px;
   display: flex;
@@ -161,17 +166,18 @@
   width: 120px;
   margin: 10px;
   display: inline-block;
-  border-bottom: 1px solid #2eadea;
+  border-bottom: 1px solid black;
   font-size: 110%;
 }
 
 .FilterItem:hover {
   cursor: pointer;
+  border-right: 1px solid black;
+  box-shadow: 3px 3px grey;
 }
 
-.backToStore:hover {
-  cursor: pointer;
-  text-decoration: underline;
+.FilterItem:active {
+  box-shadow: 0px 0px;
 }
 
 .removeItem:hover {
@@ -191,13 +197,11 @@
 
 .addItemForm {
   width: 200px;
+  margin-top: 10px;
   padding: 10px;
-  border: 2px solid #2eadea;
-  border-radius: 0px 0px 40px 0px;
-  background-color: #addff7;
-  color: blue;
   font-size: 90%;
-  border-top: none;
+  border: 1px solid black;
+  box-shadow: 5px 5px grey;
 }
 
 .addItemForm ul li {
@@ -205,9 +209,16 @@
   text-align: right;
 }
 
+#clickToExpand {
+  border-bottom: 1px solid black;
+  width: 150px;
+  margin: auto;
+}
+
 #clickToExpand:hover {
   cursor: pointer;
-  text-decoration: underline;
+  border-right: 1px solid black;
+  box-shadow: 3px 3px grey;
 }
 
 #hideElement {
@@ -221,31 +232,33 @@
 }
 
 #addItemSubmit {
-  border: 1px solid #2eadea;
-  border-radius: 5px;
-  background-color: #addff7;
+  border: 1px solid black;
+  box-shadow: 2px 2px grey;
   width: 80%;
   margin: auto;
   padding: 0px;
   padding-top: 2px;
   font-size: 100%;
   font-weight: normal;
-  color: blue;
+  background-color: white;
 }
 
 #addItemSubmit:hover {
   cursor: pointer;
-  background-color: white;
+  background-color: #efefef;
+}
+
+#addItemSubmit:active {
+  box-shadow: 0px 0px;
 }
 
 .CartPage {
-  background-color: #addff7;
-  border: 2px solid #2eadea;
-  border-radius: 40px;
+  border: 1px solid black;
+  box-shadow: 5px 5px grey;
   width: 90%;
   min-height: 150px;
   margin: auto;
-  color: blue;
+  color: black;
 }
 
 .cartTotal {
@@ -254,22 +267,25 @@
 
 .backToStore {
   display: block;
-  border-bottom: 1px solid #2eadea;
+  border-bottom: 1px solid black;
   width: 200px;
   margin: auto;
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
+.backToStore:hover {
+  cursor: pointer;
+  border-right: 1px solid black;
+  box-shadow: 2px 2px grey;
+}
+
 @media (max-width: 550px) {
   .addItemForm {
     width: 90%;
     padding: 10px;
-    border-radius: 0px 0px 40px 40px;
-  }
-
-  .FilterBar {
-    border-radius: 40px 40px 0px 0px;
+    margin-top: 10px;
+    box-shadow: 3px 3px grey;
   }
 
   .CartModule {
@@ -278,9 +294,6 @@
     bottom: 0;
     right: 0;
     border-bottom: none;
-    border-top: 2px solid #2eadea;
-    border-radius: 20px 20px 0px 0px;
-    margin-top: 0px;
-    margin-bottom: -10px;
+    border-top: 1px solid black;
   }
 }
