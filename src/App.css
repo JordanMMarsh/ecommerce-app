@@ -82,6 +82,7 @@
   border-bottom: 2px solid black;
   padding: 2px;
   width: 100px;
+  height: 20px;
 }
 
 .itemName {
@@ -296,5 +297,12 @@
     right: 0;
     border-bottom: none;
     border-top: 1px solid black;
+  }
+
+  .ShopItem {
+    max-width: 90%;
+    margin: auto;
+    margin-left: 0px;
+    margin-top: 10px;
   }
 }
