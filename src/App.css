@@ -42,8 +42,6 @@
 }
 
 .ShopItem {
-  border: 1px solid black;
-  box-shadow: 5px 5px grey;
   min-width: 10%;
   max-width: 200px;
   margin: 10px;
@@ -56,6 +54,7 @@
   margin: 5px;
   margin-bottom: 10px;
   padding: 0px;
+  font-size: 100%;
 }
 
 .pricing {
@@ -70,8 +69,8 @@
 
 .salePrice {
   color: red;
-  font-weight: bold;
-  font-size: 110%;
+  font-weight: normal;
+  font-size: 100%;
   margin-left: 10px;
 }
 
@@ -79,7 +78,7 @@
   margin-top: 1px;
   font-size: 90%;
   font-weight: normal;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid #0341a5;
   padding: 2px;
   width: 100px;
   height: 20px;
@@ -122,9 +121,10 @@
 }
 
 .buyNow {
-  border: 1px solid black;
-  box-shadow: 3px 3px grey;
-  background-color: white;
+  border: 1px solid #0341a5;
+  border-radius: 50px;
+  color: white;
+  background-color: #0341a5;
   width: 80%;
   margin: auto;
   margin-top: 5px;
@@ -132,26 +132,25 @@
 
 .buyNow:hover {
   cursor: pointer;
-  background-color: #efefef;
+  background-color: #002e7a;
 }
 
 .buyButton {
-  padding: 0px;
+  padding: 5px;
   margin: 0px;
   margin-left: 5px;
   margin-right: 5px;
   font-size: 100%;
   font-weight: normal;
-  color: black;
 }
 
 .buyNow:active {
-  box-shadow: 0px 0px;
+  color: #0341a5;
+  background-color: white;
 }
 
 .FilterBar {
-  border: 1px solid black;
-  box-shadow: 3px 3px grey;
+  border-bottom: 1px solid black;
   color: black;
   width: 90%;
   padding: 10px;
@@ -161,6 +160,8 @@
 
 #filterTitle {
   text-align: left;
+  font-weight: normal;
+  font-size: 100%;
   margin: 0px;
 }
 
@@ -168,14 +169,12 @@
   width: 120px;
   margin: 10px;
   display: inline-block;
-  border-bottom: 1px solid black;
   font-size: 110%;
 }
 
 .FilterItem:hover {
   cursor: pointer;
-  border-right: 1px solid black;
-  box-shadow: 3px 3px grey;
+  border-bottom: 1px solid black;
 }
 
 .FilterItem:active {
@@ -198,12 +197,22 @@
 }
 
 .addItemForm {
+  position: relative;
   width: 200px;
   margin-top: 10px;
   padding: 10px;
+  padding-right: 20px;
   font-size: 90%;
-  border: 1px solid black;
-  box-shadow: 5px 5px grey;
+  border-right: 1px solid black;
+}
+
+.addItemForm h2 {
+  font-weight: normal;
+  font-size: 120%;
+  width: 75px;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
 }
 
 .addItemForm ul li {
@@ -211,16 +220,18 @@
   text-align: right;
 }
 
+.addItemOptions {
+  text-align: right;
+}
+
 #clickToExpand {
-  border-bottom: 1px solid black;
   width: 150px;
   margin: auto;
 }
 
 #clickToExpand:hover {
   cursor: pointer;
-  border-right: 1px solid black;
-  box-shadow: 3px 3px grey;
+  border-bottom: 1px solid black;
 }
 
 #hideElement {
@@ -234,20 +245,26 @@
 }
 
 #addItemSubmit {
-  border: 1px solid black;
-  box-shadow: 2px 2px grey;
-  width: 80%;
+  border: 1px solid #0341a5;
+  border-radius: 50px;
+  width: 35px;
   margin: auto;
-  padding: 0px;
-  padding-top: 2px;
-  font-size: 100%;
+  margin-right: 0px;
+  padding: 5px;
+  font-size: 120%;
   font-weight: normal;
-  background-color: white;
+  background-color: #0341a5;
+  color: white;
 }
 
 #addItemSubmit:hover {
   cursor: pointer;
-  background-color: #efefef;
+  background-color: #002e7a;
+}
+
+#addItemSubmit:active {
+  background-color: white;
+  color: #0341a5;
 }
 
 #addItemSubmit:active {
@@ -287,7 +304,6 @@
     width: 90%;
     padding: 10px;
     margin-top: 10px;
-    box-shadow: 3px 3px grey;
   }
 
   .CartModule {
@@ -304,5 +320,6 @@
     margin: auto;
     margin-left: 0px;
     margin-top: 10px;
+    border-top: 1px solid black;
   }
 }

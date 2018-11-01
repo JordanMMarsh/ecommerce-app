@@ -54,7 +54,31 @@ let items = [
     tags: ["Samsung", "Widescreen", "LED"],
     badge: "New",
     rating: 5.0
-  }
+  },
+  {
+    name: 'LG 40" Widescreen TV',
+    basePrice: 1449.99,
+    salePrice: 1429.99,
+    tags: ["LG", "Widescreen"],
+    badge: "",
+    rating: 3.3
+  },
+  {
+    name: 'Samsung 48" Widescreen LCD TV',
+    basePrice: 2199.99,
+    salePrice: 1899.99,
+    tags: ["Samsung", "Widescreen", "LCD"],
+    badge: "",
+    rating: 4.1
+  },
+  {
+    name: 'Sunspring 40" Widescreen LCD TV',
+    basePrice: 999.99,
+    salePrice: 699.99,
+    tags: ["Widescreen", "LCD"],
+    badge: "",
+    rating: 4.6
+  },
 ];
 
 class StorePage extends Component {

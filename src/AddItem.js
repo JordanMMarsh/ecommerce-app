@@ -36,9 +36,8 @@ class AddItem extends Component {
     let onChangeFunction = this.props.handleChange;
     return (
       <div className="addItemForm">
-      <h2>Add Item</h2>
-      <h3 id="clickToExpand" onClick={this.toggleDisplay}>{this.state.expandText}</h3>
-      <div className="addItemOptions" id={this.state.displayOptions}>
+      <h2>New Item</h2>
+      <div className="addItemOptions">
       {this.props.error}<br />
       <input id="addItemName" type="text" value={this.props.nameValue} onChange={this.props.handleNameChange} maxlength="50" placeholder="Enter item name"/><br />
       $<input id="addItemPrice" type="text" placeholder="Enter item price" value={this.props.itemPrice} maxlength="8" onChange={this.props.handlePriceChange}/><br />
@@ -53,10 +52,10 @@ class AddItem extends Component {
         let checked = item.checked;
         let displayChecked = "";
         if (checked) displayChecked = "checked";
-        return <li className="addItemFilterListItem"><input type="checkbox" onChange={() => onChangeFunction(item.name)} checked={displayChecked}/>{item.name}</li>;
+        return <li className="addItemFilterListItem">{item.name}<input type="checkbox" onChange={() => onChangeFunction(item.name)} checked={displayChecked}/></li>;
       })}
       </ul>
-      <input id="addItemSubmit" type="button" value="Add Item" onClick={this.props.addItem}/>
+      <input id="addItemSubmit" type="button" value=">" onClick={this.props.addItem}/>
       </div></div>
     );
   }
