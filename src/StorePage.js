@@ -403,22 +403,36 @@ class StorePage extends Component {
   render() {
     let addItem = this.addItemToCart;
     let filteredList = [];
+    //Check which filters are enabled
     this.state.filterList.filter(function(item) {
       if (item.checked == true) {
         filteredList.push(item.name);
       }
     });
     let displayItems;
+    //if any filters are enabled, grab only items that match one or more filter
     if (filteredList.length > 0){
-        displayItems = this.state.items.filter(function(item) {
-        return item.tags.some(function(val) {
-          return filteredList.indexOf(val) >= 0;
-        });
+        displayItems = this.state.items.filter(function(item, i) {
+          let returnItem;
+          let thisItem = item.tags.some(function(val) {
+            return filteredList.indexOf(val) >= 0;
+          });
+          //if this item has tags belonging to the filter, store it and it's index in the catalog
+          if (thisItem) {
+            returnItem = item;
+            returnItem.index = i;
+          }
+          //return this item
+          return returnItem;
       });
     }
     else {
-      displayItems = this.state.items;
-    }
+        displayItems = this.state.items.filter(function(item, i) {
+        let returnItem = item;
+        returnItem.index = i;
+        return returnItem;
+    });
+  }
 
     let itemList = this.state.items;
     //Render screen based on state of "screen" (shop page / cart page)
@@ -429,7 +443,7 @@ class StorePage extends Component {
           <FilterBar filterList={this.state.filterList} filterChange={this.handleFilterChange}/>
           <AddItem filters={this.state.addItemFilterList} handleChange={this.handleItemFilterChange} handleNameChange={this.handleItemNameChange} itemPrice={this.state.addItemPrice} handlePriceChange={this.handleItemPriceChange} itemSalePrice={this.state.addItemSalePrice} salePriceChange={this.handleItemSalePriceChange} itemRating={this.state.addItemRating} ratingChange={this.handleItemRatingChange} nameValue={this.state.addItemName} badgeValue={this.state.addItemBadge} badgeChange={this.handleItemBadgeChange} addItem={this.addItemToStore} error={this.state.addItemError}/>
           {displayItems.map(function(item, i) {
-            return <ShopItem name={item.name} basePrice={item.basePrice} salePrice={item.salePrice} badge={item.badge} rating={item.rating} addItem={addItem} index={i}/>;
+            return <ShopItem name={item.name} basePrice={item.basePrice} salePrice={item.salePrice} badge={item.badge} rating={item.rating} addItem={addItem} index={item.index}/>;
           })}
         </div>
       );
